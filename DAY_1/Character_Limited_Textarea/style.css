@@ -1,0 +1,44 @@
+body {
+  font-family: Arial;
+  background: #f4f4f4;
+}
+
+.container {
+  width: 400px;
+  margin: 60px auto;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+textarea {
+  width: 100%;
+  height: 120px;
+  padding: 10px;
+  font-size: 14px;
+  resize: none;
+}
+
+.info {
+  margin: 8px 0;
+  font-size: 14px;
+}
+
+.warning {
+  color: orange;
+}
+
+.danger {
+  color: red;
+}
+
+button {
+  padding: 8px 12px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+#output {
+  margin-top: 15px;
+  font-weight: bold;
+}

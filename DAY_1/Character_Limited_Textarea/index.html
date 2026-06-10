@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Character Limited Input</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <h2>Post your content</h2>
+
+    <textarea id="textArea" maxlength="200" placeholder="Write something..."></textarea>
+
+    <div class="info">
+      <span id="counter">200 characters remaining</span>
+    </div>
+
+    <button onclick="submitText()">Submit</button>
+
+    <p id="output"></p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
