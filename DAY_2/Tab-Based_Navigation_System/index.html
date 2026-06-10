@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Tab Dashboard</title>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background: #f5f6fa;
+  }
+
+  .tabs {
+    display: flex;
+    border-bottom: 2px solid #ddd;
+  }
+
+  .tab {
+    padding: 12px 20px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-size: 16px;
+    transition: 0.2s;
+  }
+
+  .tab:hover {
+    background: #eee;
+  }
+
+  .tab.active {
+    border-bottom: 3px solid #007bff;
+    font-weight: bold;
+    color: #007bff;
+  }
+
+  .content {
+    padding: 20px;
+    background: white;
+    margin-top: 10px;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  }
+
+  .panel {
+    display: none;
+  }
+
+  .panel.active {
+    display: block;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="tabs">
+  <button class="tab active" data-tab="overview">Overview</button>
+  <button class="tab" data-tab="details">Details</button>
+  <button class="tab" data-tab="settings">Settings</button>
+</div>
+
+<div class="content">
+  <div id="overview" class="panel active">
+    <h2>Overview</h2>
+    <p>This is the overview section of the dashboard.</p>
+  </div>
+
+  <div id="details" class="panel">
+    <h2>Details</h2>
+    <p>This section contains detailed information.</p>
+  </div>
+
+  <div id="settings" class="panel">
+    <h2>Settings</h2>
+    <p>Manage your preferences here.</p>
+  </div>
+</div>
+
+<script>
+  const tabs = document.querySelectorAll(".tab");
+  const panels = document.querySelectorAll(".panel");
+
+  tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+
+      // Remove active class from all tabs
+      tabs.forEach(t => t.classList.remove("active"));
+
+      // Hide all panels
+      panels.forEach(p => p.classList.remove("active"));
+
+      // Activate clicked tab
+      tab.classList.add("active");
+
+      // Show corresponding panel
+      const target = tab.dataset.tab;
+      document.getElementById(target).classList.add("active");
+    });
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Efficient Large List</title>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f5f6fa;
+    margin: 20px;
+  }
+
+  h2 {
+    margin-bottom: 10px;
+  }
+
+  .list {
+    max-width: 600px;
+    background: white;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+
+  .item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+  }
+
+  .item:last-child {
+    border-bottom: none;
+  }
+
+  .delete-btn {
+    background: #ff4d4f;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+
+  .delete-btn:hover {
+    background: #d9363e;
+  }
+</style>
+</head>
+
+<body>
+
+<h2>Product List (1000+ items)</h2>
+
+<div id="list" class="list"></div>
+
+<script>
+  const list = document.getElementById("list");
+
+  // Generate 1000+ items efficiently
+  const fragment = document.createDocumentFragment();
+
+  for (let i = 1; i <= 1000; i++) {
+    const div = document.createElement("div");
+    div.className = "item";
+    div.dataset.id = i;
+
+    div.innerHTML = `
+      <span>Product Item ${i}</span>
+      <button class="delete-btn">Delete</button>
+    `;
+
+    fragment.appendChild(div);
+  }
+
+  list.appendChild(fragment);
+
+  // SINGLE event listener (event delegation)
+  list.addEventListener("click", (e) => {
+    if (e.target.classList.contains("delete-btn")) {
+      const item = e.target.closest(".item");
+      if (item) {
+        item.remove();
+      }
+    }
+  });
+</script>
+
+</body>
+</html>
